@@ -29,7 +29,7 @@ spec:
             - -c
             - |
               echo "Fetching public OCI artifact..."
-              oras pull ghcr.io/admsallai/dummy-artifact:1.0.0 -o /work
+              oras pull ghcr.io/admsallai/dummy-artifact:1.0.2 -o /work
               ls -la /work
           volumeMounts:
             - name: dacpac-volume
