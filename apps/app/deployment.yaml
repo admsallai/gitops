@@ -35,6 +35,7 @@ spec:
       labels:
         app: my-app
     spec:
+      targetNamespace: app
       volumes:
         - name: dacpac-volume
           emptyDir: {}
