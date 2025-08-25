@@ -1,5 +1,10 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  
 metadata:
   name: my-app
   namespace: app
