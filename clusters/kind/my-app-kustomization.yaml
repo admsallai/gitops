@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: my-app
+  namespace: flux-system       # Must be watched by Flux
+spec:
+  interval: 1m
+  path: "../../apps/app"       # relative to the Git root from cluster folder
+  prune: true
+  targetNamespace: app         # App resources deployed here
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
