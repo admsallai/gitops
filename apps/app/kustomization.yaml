@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  
+
 metadata:
   name: my-app
   namespace: app
@@ -12,6 +12,7 @@ spec:
   interval: 1m
   path: "./apps/app"
   prune: true
+  targetNamespace: app
   sourceRef:
     kind: GitRepository
     name: flux-system
