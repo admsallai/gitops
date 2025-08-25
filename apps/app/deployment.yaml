@@ -1,3 +1,24 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: my-app
+#   labels:
+#     app: my-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: my-app
+#   template:
+#     metadata:
+#       labels:
+#         app: my-app
+#     spec:
+#       containers:
+#       - name: my-app
+#         image: httpd:alpine
+#         ports:
+#         - containerPort: 80
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,8 +35,30 @@ spec:
       labels:
         app: my-app
     spec:
+      volumes:
+        - name: dacpac-volume
+          emptyDir: {}
+
+      initContainers:
+        - name: fetch-dacpac
+          image: ghcr.io/oras-project/oras:latest
+          command:
+            - sh
+            - -c
+            - |
+              echo "Fetching public OCI artifact..."
+              oras pull ghcr.io/admsallai/dummy-artifact:1.0.0 -o /work
+              ls -la /work
+          volumeMounts:
+            - name: dacpac-volume
+              mountPath: /work
+
       containers:
-      - name: my-app
-        image: httpd:alpine
-        ports:
-        - containerPort: 80
+        - name: my-app
+          image: httpd:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: dacpac-volume
+              mountPath: /usr/local/apache2/htdocs/dacpac
+              readOnly: true
