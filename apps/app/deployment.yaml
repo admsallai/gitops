@@ -20,7 +20,7 @@ spec:
 
       initContainers:
         - name: fetch-dacpac
-          image: ghcr.io/oras-project/oras:latest
+          image: ghcr.io/oras-project/oras:1.2.3
           command:
             - sh
             - -c
