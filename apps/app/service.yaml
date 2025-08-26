@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: ocidacpac-service
 spec:
   type: ClusterIP
   selector:
-    app: my-app
+    app: ocidacpac
   ports:
     - protocol: TCP
       port: 80

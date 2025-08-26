@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: ocidacpac
   labels:
-    app: my-app
+    app: ocidacpac
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: ocidacpac
   template:
     metadata:
       labels:
-        app: my-app
+        app: ocidacpac
     spec:
       imagePullSecrets:
         - name: ghcr-secret
@@ -36,7 +36,7 @@ spec:
               mountPath: /work
 
       containers:
-        - name: my-app
+        - name: ocidacpac
           image: httpd:alpine
           ports:
             - containerPort: 80
