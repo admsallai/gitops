@@ -2,8 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
   "enabledManagers": ["github-actions"],
-  "baseBranches": ["main", "next"], 
-  "useBaseBranchConfig": true,
+  "baseBranches": ["main", "next"],
+  "useBaseBranchConfig": "inherit",
   "packageRules": [
     {
       "description": "Upgrade internal actions if branch exists",
