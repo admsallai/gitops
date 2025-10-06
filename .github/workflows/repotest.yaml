@@ -8,3 +8,4 @@ on:
 jobs:
   call-hello:
     uses: admsallai/StarsIndustries/.github/workflows/renotest.yaml@v1beta
+    secrets: inherit
