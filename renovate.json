@@ -4,7 +4,7 @@
   "regexManagers": [
     {
       "fileMatch": [".github/workflows/.*\\.yml$"],
-      "matchStrings": ["^\\s*uses: (admsallai/StarsIndustries)@([\\w\\-]+)$"],
+      "matchStrings": ["^\\s*uses: (?<depName>admsallai/StarsIndustries)@(?<currentValue>[\\w\\-]+)$"],
       "datasourceTemplate": "github-branches",
       "depNameTemplate": "{{{depName}}}"
     }
