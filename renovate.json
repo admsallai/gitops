@@ -1,3 +1,16 @@
 {
-  "extends": ["github>admsallai/StarsIndustries"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "enabledManagers": ["github-actions"],
+  "packageRules": [
+    {
+      "description": "Allow upgrading GitHub Actions from beta → stable if branch exists",
+      "matchManagers": ["github-actions"],
+      "allowedVersions": "/^v[0-9]+$/",          // only stable branches like v1, v2, v3
+      "matchPackagePatterns": ["my-org/my-action"],
+      "versioning": "loose",                     // compare plain string refs (v1beta vs v1)
+      "extractVersion": "^(v\\d+(?:beta)?)$",    // treat 'v1beta' and 'v1' as comparable
+      "separateMajorMinor": false
+    }
+  ]
 }
