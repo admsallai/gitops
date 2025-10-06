@@ -1,17 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
-  "enabledManagers": ["github-actions"],
-  "baseBranches": ["main"],
-  "useBaseBranchConfig": "inherit",
-  "packageRules": [
+  "regexManagers": [
     {
-      "description": "Upgrade internal actions if branch exists",
-      "matchManagers": ["github-actions"],
-      "matchPackagePatterns": ["^admsallai/StarsIndustries$"],
+      "fileMatch": [".github/workflows/.*\\.yml$"],
+      "matchStrings": [
+        "uses: (admsallai/StarsIndustries)@([\\w\\-]+)"
+      ],
+      "datasourceTemplate": "github-branches",
+      "depNameTemplate": "{{{depName}}}",
       "versioning": "loose",
       "extractVersion": "^(?<version>.*)$",
-      "allowedVersions": "/.*/"
+      "allowedVersions": "/.*/",
+      "depNameTemplate": "{{{depName}}}"
     }
   ]
 }
