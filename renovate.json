@@ -4,15 +4,18 @@
   "regexManagers": [
     {
       "fileMatch": [".github/workflows/.*\\.yml$"],
-      "matchStrings": [
-        "uses: (admsallai/StarsIndustries)@([\\w\\-]+)"
-      ],
+      "matchStrings": ["^\\s*uses: (admsallai/StarsIndustries)@([\\w\\-]+)$"],
       "datasourceTemplate": "github-branches",
-      "depNameTemplate": "{{{depName}}}",
+      "depNameTemplate": "{{{depName}}}"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["regex"],
+      "matchPackagePatterns": ["^admsallai/StarsIndustries$"],
       "versioning": "loose",
       "extractVersion": "^(?<version>.*)$",
-      "allowedVersions": "/.*/",
-      "depNameTemplate": "{{{depName}}}"
+      "allowedVersions": "/.*/"
     }
   ]
 }
