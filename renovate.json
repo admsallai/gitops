@@ -3,19 +3,26 @@
   "extends": ["config:base"],
   "regexManagers": [
     {
-      "fileMatch": [".github/workflows/.*\\.yml$"],
-      "matchStrings": ["^\\s*uses: (?<depName>admsallai/StarsIndustries)@(?<currentValue>[\\w\\-]+)$"],
-      "datasourceTemplate": "github-branches",
-      "depNameTemplate": "{{{depName}}}"
+      "fileMatch": ["^action\\.ya?ml$", "^.github/workflows/[^/]+\\.ya?ml$"],
+      "matchStrings": [
+        "uses:\\s*(?<depName>admsallai/StarsIndustries)@(?<currentValue>v[0-9]+(?:beta)?)"
+      ],
+      "depNameTemplate": "{{{depName}}}",
+      "datasourceTemplate": "github-branches"
     }
   ],
   "packageRules": [
     {
-      "matchManagers": ["regex"],
+      "description": "General rule: never downgrade, never go stable → beta",
       "matchPackagePatterns": ["^admsallai/StarsIndustries$"],
       "versioning": "loose",
-      "extractVersion": "^(?<version>.*)$",
-      "allowedVersions": "/.*/"
+      "allowedVersions": "/^v\\d+(beta)?$/"
+    },
+    {
+      "description": "Block upgrades from stable → beta",
+      "matchPackagePatterns": ["^admsallai/StarsIndustries$"],
+      "matchCurrentVersion": "/^v\\d+$/",
+      "allowedVersions": "/^v\\d+$/"
     }
   ]
 }
