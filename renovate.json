@@ -6,11 +6,20 @@
     {
       "description": "Allow upgrading GitHub Actions from beta → stable if branch exists",
       "matchManagers": ["github-actions"],
-      "allowedVersions": "/^v[0-9]+$/",          // only stable branches like v1, v2, v3
       "matchPackagePatterns": ["my-org/my-action"],
-      "versioning": "loose",                     // compare plain string refs (v1beta vs v1)
-      "extractVersion": "^(v\\d+(?:beta)?)$",    // treat 'v1beta' and 'v1' as comparable
+      "allowedVersions": "/^v[0-9]+$/",
+      "versioning": "loose",
+      "extractVersion": "^(v\\d+(?:beta)?)$",
       "separateMajorMinor": false
+    },
+    {
+      "description": "Use branches as versions for internal actions",
+      "matchManagers": ["github-actions"],
+      "matchPackagePatterns": ["^admsallai/StarsIndustries"],
+      "versioning": "loose",
+      "extractVersion": "^(?<version>.*)$",
+      "allowedVersions": "/.*/",
+      "registryUrls": ["https://api.github.com/repos/admsallai/StarsIndustries/branches"]
     }
   ]
 }
