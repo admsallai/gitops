@@ -2,9 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
   "enabledManagers": ["github-actions"],
+  "baseBranches": ["main", "next"], 
+  "useBaseBranchConfig": true,
   "packageRules": [
     {
-      "description": "Upgrade internal actions from beta → stable if branch exists",
+      "description": "Upgrade internal actions if branch exists",
       "matchManagers": ["github-actions"],
       "matchPackagePatterns": ["^admsallai/StarsIndustries$"],
       "versioning": "loose",
