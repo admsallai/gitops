@@ -1,28 +1,18 @@
-{
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "^\\.github/workflows/.*\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "uses:\\s*['\"]?(?<depName>[\\w.-]+/StarsIndustries(?:/.+?)?)@(?<currentValue>[\\w./-]+)['\"]?"
-      ],
-      "depNameTemplate": "{{{depName}}}",
-      "datasourceTemplate": "github-branches",
-      "versioningTemplate": "loose"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "/^admsallai/StarsIndustries/"
-      ],
-      "allowedVersions": "/^v1$/"
-    }
-  ]
-}
+"customManagers": [
+  {
+    "customType": "regex",
+    "managerFilePatterns": ["^\\.github/workflows/.*\\.ya?ml$"],
+    "matchStrings": [
+      "uses:\\s*['\"]?(?<depName>[\\w.-]+/StarsIndustries(?:/.+?)?)@(?<currentValue>[\\w./-]+)['\"]?"
+    ],
+    "depNameTemplate": "{{{depName}}}",
+    "datasourceTemplate": "github-branches",
+    "versioningTemplate": "loose",
+    "packageRules": [
+      {
+        "matchPackageNames": ["/^admsallai/StarsIndustries/"],
+        "allowedVersions": "/^v1$/"
+      }
+    ]
+  }
+]
