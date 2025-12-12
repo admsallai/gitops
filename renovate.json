@@ -1,14 +1,15 @@
 {
-  "regexManagers": [
+  "extends": ["config:recommended"],
+
+  "packageRules": [
     {
-      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
-      "matchStrings": [
-        "uses:\\s*['\"]?(?<depName>[\\w.-]+/StarsIndustries/.github/workflows/renotest.yaml)@(?<currentValue>[\\w.-]+)['\"]?"
-      ],
-      "depNameTemplate": "{{{depName}}}",
-      "datasourceTemplate": "github-branches",
-      "versioningTemplate": "loose",
-      "replaceStringTemplate": "testbranch"
+      "matchManagers": ["github-actions"],
+      "versioning": "loose",
+
+      "prerelease": "beta",
+      "preferStable": true,
+
+      "allowedVersions": ".*"
     }
   ]
 }
