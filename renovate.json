@@ -6,6 +6,7 @@
       "matchManagers": ["github-actions"],
       "versioning": "loose",
       "allowedVersions": "/.*/"
+      "recreateClosed": true
     }
   ]
 }
