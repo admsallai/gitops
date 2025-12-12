@@ -5,7 +5,7 @@
     {
       "matchManagers": ["github-actions"],
       "versioning": "loose",
-      "allowedVersions": ".*"
+      "allowedVersions": "/.*/"
     }
   ]
 }
