@@ -5,8 +5,8 @@
     {
       "matchManagers": ["github-actions"],
       "versioning": "loose",
-      "allowedVersions": "/.*/"
-      "recreateClosed": true
+      "allowedVersions": "/.*/",
+      "recreateWhen": "always"
     }
   ]
 }
